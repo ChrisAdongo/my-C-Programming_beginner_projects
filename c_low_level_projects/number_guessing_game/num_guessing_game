@@ -1,0 +1,50 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    /* This is the beginning of the main() function, where three integer variables are declared and initialized.*/
+    int num = 60;
+    int guess;
+    int numGuesses = 0;
+
+    /*
+    This is the start of a while loop that will continue until the user has made three guesses.
+    Starts by displaying a prompt for the user to make a guess.
+    */
+    while (numGuesses < 3) {
+        printf("Make a guess: ");
+        /* This line reads the user's input and checks if it is a valid integer. If the input is not valid, the if statement is triggered.*/
+        if (scanf("%d", &guess) != 1) {
+            /* This line informs the user that their input is invalid.*/
+            printf("Invalid input.\n");
+            /* These lines of code is a while loop that reads characters from the standard input until either a newline character ('\n') or the end-of-file (EOF) is reached. It does this by using the getchar() function to read a single character at a time and assign the value to the variable c.
+
+            The while loop then checks if the value of c is not equal to '\n' (which indicates that the user has not pressed the enter key yet) and also not equal to EOF (which indicates the end of the input stream). If either of these conditions are true, the loop continues to read and discard characters until the conditions are no longer true.
+
+            The purpose of this loop is to clear the input buffer of any extra characters that may have been entered after an invalid input. This prevents those characters from being read again and causing the program to enter an infinite loop or malfunction.*/
+            int c;
+            while ((c = getchar()) != '\n' && c != EOF);
+            /* This line continues the while loop, allowing the user to make another guess*/
+            continue;
+        }
+        /* If the user's input is a valid integer, this line checks if the guess is too low.*/
+        if (guess < num) {
+            /* If the guess is too low, this line informs the user.*/
+            printf("Your guess is too low.\n");
+        /* If the guess is not too low, this line checks if the guess is correct.*/
+        } else if (guess == num) {
+            /* If the guess is correct, this line informs the user and ends the program.*/
+            printf("Your guess is correct.\n");
+            return 0;
+        /* If the guess is neither too low nor correct, this line informs the user that the guess is too high.*/
+        } else {
+            printf("Your guess is too high.\n");
+        }
+        /* This line increments the number of guesses made by the user.*/
+        numGuesses++;
+    }
+    /* If the user has made three incorrect guesses, this line informs the user and ends the program.*/
+    printf("You have run out of guesses. The number was %d.\n", num);
+    return 0;
+}
