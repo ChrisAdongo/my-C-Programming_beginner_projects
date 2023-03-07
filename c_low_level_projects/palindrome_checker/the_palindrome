@@ -1,0 +1,63 @@
+#include <stdio.h>
+#include <string.h>
+
+#define MAX_LENGTH 100
+
+/**
+ * check_palindrome - Check if a given string is a palindrome
+ *
+ * @str: The string to check
+ *
+ * Return: 1 if @str is a palindrome, 0 otherwise
+ */
+int check_palindrome(char *str)
+{
+    int i, j;
+
+    for (i = 0, j = strlen(str) - 1; i < j; i++, j--)
+    {
+        if (str[i] != str[j])
+        {
+            return 0;
+        }
+    }
+
+    return 1;
+}
+
+/**
+ * main - Entry point
+ *
+ * Return: Always 0
+ */
+int main(void)
+{
+    char input[MAX_LENGTH];
+    char choice = 'y';
+
+    while (choice == 'y' || choice == 'Y')
+    {
+        printf("Enter a word or phrase: ");
+        fgets(input, MAX_LENGTH, stdin);
+
+        /* Remove newline character from input string*/
+        input[strcspn(input, "\n")] = '\0';
+
+        /* Check if input is a palindrome*/
+        if (check_palindrome(input))
+        {
+            printf("'%s' is a palindrome.\n", input);
+        }
+        else
+        {
+            printf("'%s' is not a palindrome.\n", input);
+        }
+
+        printf("Do you want to check another word or phrase? (y/n): ");
+        scanf(" %c", &choice);
+        getchar(); /* Consume newline character from input buffer*/
+    }
+
+    printf("Goodbye!\n");
+    return 0;
+}
