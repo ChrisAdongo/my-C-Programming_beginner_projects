@@ -1,6 +1,6 @@
 # The Tic Tac Toe Game!
 
-The program should allow two players to take turns marking X's and O's on a 3x3 grid, and should determine a winner or a tie.
+The program allows two players to take turns marking X's and O's on a 3x3 grid, and should determine a winner or a tie.
 
 #include <stdio.h>
 
@@ -33,7 +33,8 @@ bool check_winner(char board[3][3], char mark) {
 
 * This defines the check_winner() function that takes the board array and a mark (X or O) as input.
 
-for (int i = 0; i < 3; i++) {
+for (int i = 0; i < 3; i++) 
+    {
         if (board[i][0] == mark && board[i][1] == mark && board[i][2] == mark) {
             return true;
         }
